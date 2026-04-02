@@ -13,7 +13,8 @@
   name: "light";
   default: true;
   --color-primary: blue;
-  --color-secondary: teal;
+  --color-secondary: #d72050;
+  --color-base-200: #f3f3f3;
   --color-base-300: #706f6f;
   --color-base-400: #403f3f;
 }
