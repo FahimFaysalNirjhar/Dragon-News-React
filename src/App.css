@@ -12,9 +12,14 @@
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: blue;
+  --color-primary: #403f3f;
   --color-secondary: #d72050;
   --color-base-200: #f3f3f3;
   --color-base-300: #706f6f;
   --color-base-400: #403f3f;
+}
+a.active {
+  color: #6366f1;
+  font-weight: 600;
+  border-bottom: 2px solid #6366f1;
 }
