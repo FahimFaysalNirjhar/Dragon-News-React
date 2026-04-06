@@ -2,8 +2,8 @@ import React from "react";
 import { createBrowserRouter } from "react-router";
 import HomeLayout from "../layouts/HomeLayout";
 import Home from "../pagees/Home/Home";
-import About from "../pagees/About/About";
 import Career from "../pagees/Career/Career";
+import About from "../pagees/About/About";
 
 const router = createBrowserRouter([
   {
