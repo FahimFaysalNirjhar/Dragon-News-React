@@ -11,9 +11,36 @@ const NavLinks = () => {
 
       {/* Nav links */}
       <nav className="flex gap-3 md:gap-6 text-sm md:text-base text-base-300 flex-wrap justify-center">
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/about">About</NavLink>
-        <NavLink to="/career">Career</NavLink>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive
+              ? "text-indigo-500 font-semibold border-b-2 border-indigo-500"
+              : ""
+          }
+        >
+          Home
+        </NavLink>
+        <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            isActive
+              ? "text-indigo-500 font-semibold border-b-2 border-indigo-500"
+              : ""
+          }
+        >
+          About
+        </NavLink>
+        <NavLink
+          to="/career"
+          className={({ isActive }) =>
+            isActive
+              ? "text-indigo-500 font-semibold border-b-2 border-indigo-500"
+              : ""
+          }
+        >
+          Career
+        </NavLink>
       </nav>
 
       {/* User actions */}

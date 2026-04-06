@@ -1,4 +1,6 @@
 import React, { use } from "react";
+import { NavLink } from "react-router";
+import "../../App.css";
 
 const categoryPromise = fetch(
   "https://raw.githubusercontent.com/FahimFaysalNirjhar/categories-data/refs/heads/main/categories.json",
@@ -9,12 +11,15 @@ const Categories = () => {
   return (
     <div className="flex flex-col">
       {categories.map((category) => (
-        <button
-          key={category.id}
-          className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl"
+        <NavLink
+          to={`/category/${category.id}`}
+          className={({ isActive }) =>
+            `btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl w-full
+     ${isActive ? "btn-secondary text-white" : ""}`
+          }
         >
           {category.name}
-        </button>
+        </NavLink>
       ))}
     </div>
   );

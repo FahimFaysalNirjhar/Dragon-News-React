@@ -15,13 +15,14 @@ const HomeLayout = () => {
         </section>
         <nav>
           <NavLinks></NavLinks>
+          <Outlet></Outlet>
         </nav>
       </header>
       <main className="grid grid-cols-12 gap-5 max-w-11/12 mx-auto my-8">
         <aside className="col-span-3">
           <LeftAside></LeftAside>
         </aside>
-        <Outlet></Outlet>
+        <section></section>
       </main>
     </>
   );

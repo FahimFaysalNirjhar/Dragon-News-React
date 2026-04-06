@@ -4,6 +4,7 @@ import HomeLayout from "../layouts/HomeLayout";
 import Home from "../pagees/Home/Home";
 import Career from "../pagees/Career/Career";
 import About from "../pagees/About/About";
+import CategoryNews from "../pagees/CategoryNews/CategoryNews";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: "/career",
         element: <Career></Career>,
+      },
+      {
+        path: "/category/:id",
+        element: <CategoryNews></CategoryNews>,
       },
     ],
   },
