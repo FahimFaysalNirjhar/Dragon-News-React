@@ -9,7 +9,7 @@ const Career = () => {
         </h1>
 
         <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-6">
-          Join <span className="font-semibold text-secondary">Dragon News</span>
+          Join <span className="font-semibold text-secondary">Dragon News</span>{" "}
           and be part of a passionate team dedicated to delivering accurate and
           impactful journalism. We are always looking for talented individuals
           who are eager to innovate and make a difference in the media industry.
