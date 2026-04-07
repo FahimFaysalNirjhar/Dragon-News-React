@@ -12,6 +12,7 @@ const Categories = () => {
     <div className="flex flex-col">
       {categories.map((category) => (
         <NavLink
+          key={category.id}
           to={`/category/${category.id}`}
           className={({ isActive }) =>
             `btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl w-full

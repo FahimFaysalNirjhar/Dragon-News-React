@@ -10,6 +10,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout></HomeLayout>,
+    HydrateFallback: () => <div>Loading...</div>,
     children: [
       // renders at "/dashboard"
       { index: true, path: "/", element: <Home></Home> },
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/category/:id",
+        loader: () =>
+          fetch(
+            "https://raw.githubusercontent.com/FahimFaysalNirjhar/news-data/refs/heads/main/news.json",
+          ).then((res) => res.json()),
         element: <CategoryNews></CategoryNews>,
       },
     ],
