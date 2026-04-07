@@ -5,7 +5,6 @@ import NewsCard from "../../components/NewsCard/NewsCard";
 const CategoryNews = () => {
   const { id } = useParams();
   const data = useLoaderData();
-  console.log(id, data);
 
   const [categoryNews, setCategoryNews] = useState([]);
   useEffect(() => {
@@ -29,8 +28,8 @@ const CategoryNews = () => {
         Found
       </div>
       <div className="grid grid-cols-1">
-        {categoryNews.map((news) => (
-          <NewsCard news={news}></NewsCard>
+        {categoryNews.map((news, idx) => (
+          <NewsCard key={idx} news={news}></NewsCard>
         ))}
       </div>
     </>
