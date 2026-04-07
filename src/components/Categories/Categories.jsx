@@ -9,14 +9,14 @@ const categoryPromise = fetch(
 const Categories = () => {
   const categories = use(categoryPromise);
   return (
-    <div className="flex flex-col">
+    <div className="grid grid-cols-2 md:grid-cols-1 gap-2 p-2">
       {categories.map((category) => (
         <NavLink
           key={category.id}
           to={`/category/${category.id}`}
           className={({ isActive }) =>
-            `btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl w-full
-     ${isActive ? "btn-secondary text-white" : ""}`
+            `btn btn-sm md:btn-md w-full justify-start font-medium rounded-lg
+             ${isActive ? "btn-secondary text-white" : "btn-ghost bg-white hover:btn-secondary"}`
           }
         >
           {category.name}
