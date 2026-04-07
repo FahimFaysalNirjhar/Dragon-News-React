@@ -4,30 +4,32 @@ import LatestNews from "../components/LatestNews/LatestNews";
 import NavLinks from "../components/NavLinks/NavLinks";
 import { Outlet } from "react-router";
 import LeftAside from "../pagees/LeftAside/LeftAside";
-import CategoryNews from "../pagees/CategoryNews/CategoryNews";
 import RightAside from "../pagees/RightAside/RightAside";
 
 const HomeLayout = () => {
   return (
     <>
       <header>
-        <Header></Header>
+        <Header />
         <section>
-          <LatestNews></LatestNews>
+          <LatestNews />
         </section>
         <nav>
-          <NavLinks></NavLinks>
+          <NavLinks />
         </nav>
       </header>
-      <main className="grid grid-cols-12 gap-5 max-w-11/12 mx-auto my-8">
-        <aside className="col-span-3">
-          <LeftAside></LeftAside>
+
+      <main className="grid grid-cols-1 md:grid-cols-12 gap-5 max-w-11/12 mx-auto my-8 px-4">
+        <aside className="md:col-span-3 order-1 md:order-1">
+          <LeftAside />
         </aside>
-        <section className="col-span-6">
-          <Outlet></Outlet>
+
+        <section className="md:col-span-6 order-2 md:order-2">
+          <Outlet />
         </section>
-        <aside className="col-span-3">
-          <RightAside></RightAside>
+
+        <aside className="md:col-span-3 order-3 md:order-3">
+          <RightAside />
         </aside>
       </main>
     </>
