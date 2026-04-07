@@ -1,6 +1,6 @@
 import React from "react";
 
-const NewsCard = () => {
+const NewsCard = ({ news }) => {
   return <div>hello word</div>;
 };
 
