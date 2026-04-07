@@ -5,6 +5,7 @@ import NavLinks from "../components/NavLinks/NavLinks";
 import { Outlet } from "react-router";
 import LeftAside from "../pagees/LeftAside/LeftAside";
 import CategoryNews from "../pagees/CategoryNews/CategoryNews";
+import RightAside from "../pagees/RightAside/RightAside";
 
 const HomeLayout = () => {
   return (
@@ -25,7 +26,9 @@ const HomeLayout = () => {
         <section className="col-span-6">
           <Outlet></Outlet>
         </section>
-        <aside className="col-span-3"></aside>
+        <aside className="col-span-3">
+          <RightAside></RightAside>
+        </aside>
       </main>
     </>
   );
