@@ -7,6 +7,7 @@ import About from "../pagees/About/About";
 import CategoryNews from "../pagees/CategoryNews/CategoryNews";
 import Authentication from "../layouts/Authentication";
 import Login from "../pagees/Login/Login";
+import Register from "../pagees/Login/Register/Register";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/auth/register",
+        element: <Register></Register>,
       },
     ],
   },
