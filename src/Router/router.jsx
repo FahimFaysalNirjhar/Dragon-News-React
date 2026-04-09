@@ -5,6 +5,8 @@ import Home from "../pagees/Home/Home";
 import Career from "../pagees/Career/Career";
 import About from "../pagees/About/About";
 import CategoryNews from "../pagees/CategoryNews/CategoryNews";
+import Authentication from "../layouts/Authentication";
+import Login from "../pagees/Login/Login";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,19 @@ const router = createBrowserRouter([
             "https://raw.githubusercontent.com/FahimFaysalNirjhar/news-data/refs/heads/main/news.json",
           ).then((res) => res.json()),
         element: <CategoryNews></CategoryNews>,
+      },
+    ],
+  },
+  {
+    path: "/auth",
+    element: <Authentication></Authentication>,
+    children: [
+      {
+        path: "/auth/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/auth/register",
       },
     ],
   },
