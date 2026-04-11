@@ -1,14 +1,14 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import user from "../../assets/user.png";
 import "../../App.css";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const NavLinks = () => {
   return (
     <div className="flex flex-col md:flex-row gap-3 md:gap-0 py-2 max-w-11/12 mx-auto px-4  justify-between items-center">
       {/* Logo placeholder */}
       <div className="hidden md:block" />
-
       {/* Nav links */}
       <nav className="flex gap-3 md:gap-6 text-sm md:text-base text-base-300 flex-wrap justify-center">
         <NavLink
