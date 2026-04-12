@@ -5,7 +5,16 @@ import "../../App.css";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const NavLinks = () => {
-  const { user } = use(AuthContext);
+  const { user, logOut } = use(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        alert("Logout successful.");
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  };
   return (
     <div className="flex flex-col md:flex-row gap-3 md:gap-0 py-2 max-w-11/12 mx-auto px-4  justify-between items-center">
       {/* Logo placeholder */}
@@ -53,7 +62,10 @@ const NavLinks = () => {
           className="w-8 h-8 rounded-full"
         />
         {user ? (
-          <button className="btn btn-primary text-white px-4 md:px-6 py-1.5 md:py-2 text-xs md:text-sm font-medium">
+          <button
+            onClick={handleLogOut}
+            className="btn btn-primary text-white px-4 md:px-6 py-1.5 md:py-2 text-xs md:text-sm font-medium"
+          >
             Logout
           </button>
         ) : (
