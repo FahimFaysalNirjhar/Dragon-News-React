@@ -18,15 +18,17 @@ const NewsDetails = () => {
   return (
     <div>
       <header>
-        <Header></Header>
+        <Header />
       </header>
-      <main className="grid grid-cols-12 max-w-11/12 mx-auto py-8">
-        <section className="col-span-9">
-          <NewsDetailsCard news={news}></NewsDetailsCard>
-        </section>
-        <aside className="col-span-3">
-          <RightAside></RightAside>
-        </aside>
+      <main className="max-w-11/12 mx-auto px-4 py-6 md:py-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+          <section className="md:col-span-9">
+            <NewsDetailsCard news={news} />
+          </section>
+          <aside className="md:col-span-3">
+            <RightAside />
+          </aside>
+        </div>
       </main>
     </div>
   );
