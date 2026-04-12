@@ -13,7 +13,7 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        alert(`{user} Login Successfully`);
+        alert(`${user.email} Login Successfully`);
         // ...
       })
       .catch((error) => {

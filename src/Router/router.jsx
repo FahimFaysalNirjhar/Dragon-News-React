@@ -9,6 +9,7 @@ import Authentication from "../layouts/Authentication";
 import Login from "../pagees/Login/Login";
 import Register from "../pagees/Login/Register/Register";
 import NewsDetails from "../pagees/NewsDetails/NewsDetails";
+import PrivateRoute from "../Provider/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -51,7 +52,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/newsDetails/:id",
-    element: <NewsDetails></NewsDetails>,
+    element: (
+      <PrivateRoute>
+        <NewsDetails></NewsDetails>
+      </PrivateRoute>
+    ),
     loader: () =>
       fetch(
         "https://raw.githubusercontent.com/FahimFaysalNirjhar/news-data/refs/heads/main/news.json",
