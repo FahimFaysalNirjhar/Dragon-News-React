@@ -1,16 +1,40 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Register = () => {
   const { createUser } = use(AuthContext);
+  const [error, setError] = useState("");
   const handleRegister = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const photo = e.target.photo.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(name, photo, email, password);
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters");
+      return;
+    }
+
+    if (!/[A-Z]/.test(password)) {
+      setError("Password must contain at least one UPPERCASE letter");
+      return;
+    }
+
+    if (!/[a-z]/.test(password)) {
+      setError("Password must contain at least one lowercase letter");
+      return;
+    }
+
+    if (!/[0-9]/.test(password)) {
+      setError("Password must contain at least one number");
+      return;
+    }
+
+    if (!/[!@#$%^&*]/.test(password)) {
+      setError("Password must contain at least one special character");
+      return;
+    }
     createUser(email, password)
       .then((userCredential) => {
         // Signed up
@@ -42,6 +66,7 @@ const Register = () => {
               type="text"
               className="input"
               placeholder="Enter your name"
+              required
             />
             {/* photo url */}
             <label className="label font-bold">Photo URL</label>
@@ -50,6 +75,7 @@ const Register = () => {
               type="text"
               className="input"
               placeholder="Enter your photo url"
+              required
             />
             {/* email */}
             <label className="label font-bold">Email</label>
@@ -58,6 +84,7 @@ const Register = () => {
               type="email"
               className="input"
               placeholder="Enter your email address"
+              required
             />
             <label className="label font-bold">Password</label>
             <input
@@ -65,7 +92,9 @@ const Register = () => {
               type="password"
               className="input"
               placeholder="Enter your password"
+              required
             />
+            {error && <p className="text-red-500 text-xs">{error}</p>}
             <button type="submit" className="btn btn-neutral mt-4">
               Register
             </button>

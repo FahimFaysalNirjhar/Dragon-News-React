@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthProvider";
 
@@ -7,6 +7,7 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   console.log(location);
+  const [error, setError] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -22,9 +23,38 @@ const Login = () => {
         // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(errorCode, errorMessage);
+        let message = "";
+
+        switch (error.code) {
+          case "auth/user-not-found":
+            message = "No account found with this email ❌";
+            break;
+
+          case "auth/wrong-password":
+            message = "Incorrect password ❌";
+            break;
+
+          case "auth/invalid-email":
+            message = "Invalid email format ❌";
+            break;
+
+          case "auth/invalid-credential":
+            message = "Email or password is incorrect ❌";
+            break;
+
+          case "auth/too-many-requests":
+            message = "Too many attempts. Try again later ⏳";
+            break;
+
+          case "auth/network-request-failed":
+            message = "Network error. Check your internet 🌐";
+            break;
+
+          default:
+            message = "Login failed. Try again!";
+        }
+
+        setError(message);
       });
   };
   return (
@@ -42,6 +72,7 @@ const Login = () => {
                 type="email"
                 className="input"
                 placeholder="Email"
+                required
               />
               <label className="label font-bold">Password</label>
               <input
@@ -49,10 +80,12 @@ const Login = () => {
                 type="password"
                 className="input"
                 placeholder="Password"
+                required
               />
               <div>
                 <a className="link link-hover">Forgot password?</a>
               </div>
+              {error && <p className="text-red-500 text-sm">{error}</p>}
               <button className="btn btn-neutral mt-4">Login</button>
               <p className="mt-6 text-center font-bold text-base-300">
                 Dont’t Have An Account ?{" "}
