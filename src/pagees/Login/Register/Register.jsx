@@ -1,9 +1,11 @@
 import React, { use, useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Register = () => {
-  const { createUser } = use(AuthContext);
+  const { createUser, UserProfile } = use(AuthContext);
+  const navigate = useNavigate();
+
   const [error, setError] = useState("");
   const handleRegister = (e) => {
     e.preventDefault();
@@ -39,6 +41,7 @@ const Register = () => {
       .then((userCredential) => {
         // Signed up
         const user = userCredential.user;
+        navigate("/");
         console.log(user);
 
         // ...

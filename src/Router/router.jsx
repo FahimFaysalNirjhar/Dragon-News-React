@@ -10,14 +10,13 @@ import Login from "../pagees/Login/Login";
 import Register from "../pagees/Login/Register/Register";
 import NewsDetails from "../pagees/NewsDetails/NewsDetails";
 import PrivateRoute from "../Provider/PrivateRoute";
+import Loading from "../components/Loading/Loading";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout></HomeLayout>,
-    HydrateFallback: () => (
-      <span className="loading loading-dots loading-xl"></span>
-    ),
+    HydrateFallback: () => <Loading></Loading>,
     children: [
       // renders at "/dashboard"
       { index: true, path: "/", element: <Home></Home> },
@@ -61,9 +60,7 @@ const router = createBrowserRouter([
       fetch(
         "https://raw.githubusercontent.com/FahimFaysalNirjhar/news-data/refs/heads/main/news.json",
       ).then((res) => res.json()),
-    HydrateFallback: () => (
-      <span className="loading loading-dots loading-xl"></span>
-    ),
+    HydrateFallback: () => <Loading></Loading>,
   },
 ]);
 
