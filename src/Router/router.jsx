@@ -8,12 +8,15 @@ import CategoryNews from "../pagees/CategoryNews/CategoryNews";
 import Authentication from "../layouts/Authentication";
 import Login from "../pagees/Login/Login";
 import Register from "../pagees/Login/Register/Register";
+import NewsDetails from "../pagees/NewsDetails/NewsDetails";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout></HomeLayout>,
-    HydrateFallback: () => <div>Loading...</div>,
+    HydrateFallback: () => (
+      <span className="loading loading-dots loading-xl"></span>
+    ),
     children: [
       // renders at "/dashboard"
       { index: true, path: "/", element: <Home></Home> },
@@ -45,6 +48,17 @@ const router = createBrowserRouter([
         element: <Register></Register>,
       },
     ],
+  },
+  {
+    path: "/newsDetails/:id",
+    element: <NewsDetails></NewsDetails>,
+    loader: () =>
+      fetch(
+        "https://raw.githubusercontent.com/FahimFaysalNirjhar/news-data/refs/heads/main/news.json",
+      ).then((res) => res.json()),
+    HydrateFallback: () => (
+      <span className="loading loading-dots loading-xl"></span>
+    ),
   },
 ]);
 
