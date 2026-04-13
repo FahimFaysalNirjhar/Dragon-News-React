@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Register = () => {
-  const { createUser, UserProfile } = use(AuthContext);
+  const { createUser, sendVerificationEmail } = use(AuthContext);
   const navigate = useNavigate();
 
   const [error, setError] = useState("");
@@ -41,6 +41,13 @@ const Register = () => {
       .then((userCredential) => {
         // Signed up
         const user = userCredential.user;
+        sendVerificationEmail()
+          .then(() => {
+            alert("Verification email sent!");
+          })
+          .catch((error) => {
+            alert("Email verification error:", error);
+          });
         navigate("/");
         console.log(user);
 
