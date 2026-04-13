@@ -6,19 +6,19 @@ const Login = () => {
   const { SignedIn, resetPassword } = use(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
+  // console.log(location);
   const [error, setError] = useState("");
   const emailRef = useRef();
 
   const handleForgetPassword = () => {
     const email = emailRef.current.value;
-    console.log(email);
+    // console.log(email);
     resetPassword(email)
       .then(() => alert("Password reset email sent!"))
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.error(errorCode, errorMessage);
+        alert(errorCode, errorMessage);
       });
   };
 
@@ -26,7 +26,7 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(e.target, email, password);
+    // console.log(e.target, email, password);
     SignedIn(email, password)
       .then((userCredential) => {
         // Signed in

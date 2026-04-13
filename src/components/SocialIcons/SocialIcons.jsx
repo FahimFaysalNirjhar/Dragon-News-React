@@ -5,7 +5,7 @@ import { useNavigate } from "react-router"; // 👈 fix this
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const SocialIcons = () => {
-  const { signInWithGoogle } = use(AuthContext);
+  const { signInWithGoogle, signInWithGitHub } = use(AuthContext);
   const navigate = useNavigate(); // 👈 add this
 
   const handleGoogleLogin = () => {
@@ -14,6 +14,18 @@ const SocialIcons = () => {
         const user = userCredential.user;
         alert(`${user.displayName} Login Successfully ✅`);
         navigate("/"); // 👈 fix this
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
+
+  const handleGitHubLogin = () => {
+    signInWithGitHub()
+      .then((userCredential) => {
+        const user = userCredential.user;
+        alert(`${user.displayName} Login Successfully ✅`);
+        navigate("/");
       })
       .catch((error) => {
         alert(error.message);
@@ -30,7 +42,10 @@ const SocialIcons = () => {
         >
           <FcGoogle /> Login with Google
         </button>
-        <button className="btn btn-primary btn-outline w-full">
+        <button
+          onClick={handleGitHubLogin}
+          className="btn btn-primary btn-outline w-full"
+        >
           <FaGithub /> Login with GitHub
         </button>
       </div>

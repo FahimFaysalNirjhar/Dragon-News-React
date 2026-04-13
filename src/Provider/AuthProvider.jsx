@@ -11,6 +11,7 @@ import {
   sendPasswordResetEmail,
   signInWithPopup,
   GoogleAuthProvider,
+  GithubAuthProvider,
 } from "firebase/auth";
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -59,6 +60,13 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider); // 👈 fix this
   };
 
+  const gitHubProvider = new GithubAuthProvider();
+
+  const signInWithGitHub = () => {
+    setLoading(true);
+    return signInWithPopup(auth, gitHubProvider);
+  };
+
   const authData = {
     user,
     setUser,
@@ -70,6 +78,7 @@ const AuthProvider = ({ children }) => {
     sendVerificationEmail,
     resetPassword,
     signInWithGoogle,
+    signInWithGitHub,
   };
   return <AuthContext value={authData}>{children}</AuthContext>;
 };
