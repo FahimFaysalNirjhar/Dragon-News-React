@@ -5,7 +5,7 @@ import { useNavigate } from "react-router"; // 👈 fix this
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const SocialIcons = () => {
-  const { signInWithGoogle, signInWithGitHub } = use(AuthContext);
+  const { signInWithGoogle, signInWithGitHub, user } = use(AuthContext);
   const navigate = useNavigate(); // 👈 add this
 
   const handleGoogleLogin = () => {
@@ -31,6 +31,8 @@ const SocialIcons = () => {
         alert(error.message);
       });
   };
+
+  if (user) return null;
 
   return (
     <div className="space-y-5">
