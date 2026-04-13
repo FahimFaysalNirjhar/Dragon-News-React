@@ -1,13 +1,26 @@
-import React, { use, useState } from "react";
+import React, { use, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
-  const { SignedIn } = use(AuthContext);
+  const { SignedIn, resetPassword } = use(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   console.log(location);
   const [error, setError] = useState("");
+  const emailRef = useRef();
+
+  const handleForgetPassword = () => {
+    const email = emailRef.current.value;
+    console.log(email);
+    resetPassword(email)
+      .then(() => alert("Password reset email sent!"))
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(errorCode, errorMessage);
+      });
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -18,6 +31,7 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+
         alert(`${user.email} Login Successfully`);
         navigate(`${location.state ? location.state : "/"}`);
         // ...
@@ -72,6 +86,7 @@ const Login = () => {
                 type="email"
                 className="input"
                 placeholder="Email"
+                ref={emailRef}
                 required
               />
               <label className="label font-bold">Password</label>
@@ -82,7 +97,7 @@ const Login = () => {
                 placeholder="Password"
                 required
               />
-              <div>
+              <div onClick={handleForgetPassword}>
                 <a className="link link-hover">Forgot password?</a>
               </div>
               {error && <p className="text-red-500 text-sm">{error}</p>}
