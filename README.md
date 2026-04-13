@@ -1,16 +1,106 @@
-# React + Vite
+# 🐉 Dragon News
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern news web application built with **React**, **React Router**, **Firebase Authentication**, and **Tailwind CSS (DaisyUI)**.  
+Users can browse news by categories, view detailed articles, and securely register/login using email, Google, or GitHub authentication.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+- 🔐 Firebase Authentication (Email/Password, Google, GitHub)
+- 🧑 User registration with email verification
+- 🔑 Protected routes (Private Routing)
+- 📰 Dynamic news categories
+- 📄 News details page
+- ⚡ Loading spinner for async states
+- 🔄 Password reset functionality
+- 🎯 Redirect after login (return to previous page)
+- 🎨 Responsive UI with Tailwind CSS + DaisyUI
+- 📦 Context API for global auth state
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React.js**
+- **React Router**
+- **Firebase Authentication**
+- **Context API**
+- **Tailwind CSS**
+- **DaisyUI**
+- **Vite**
+
+---
+
+## 📁 Project Structure
+
+src/
+│
+├── components/
+│ ├── Header/
+│ ├── NewsDetailsCard/
+│ ├── Loading/
+│
+├── pages/
+│ ├── Home/
+│ ├── Login/
+│ ├── Register/
+│ ├── NewsDetails/
+│ ├── Career/
+│
+├── Provider/
+│ └── AuthProvider.jsx
+│
+├── routes/
+│ └── PrivateRoute.jsx
+│
+├── Firebase/
+│ └── firebase.config.js
+│
+└── App.jsx
+
+---
+
+## 🔐 Authentication Features
+
+- Create account with email & password
+- Login with email/password
+- Google login
+- GitHub login
+- Email verification after registration
+- Password reset via email
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/your-username/dragon-news.git
+cd dragon-news
+
+
+---
+
+### Install
+npm install
+
+### Env
+VITE_apiKey=your_api_key
+VITE_authDomain=your_auth_domain
+VITE_projectId=your_project_id
+VITE_storageBucket=your_storage_bucket
+VITE_messagingSenderId=your_messaging_sender_id
+VITE_appId=your_app_id
+
+### Run
+npm run dev
+
+## 👨‍💻 Author
+
+**Fahim Faysal**
+
+- 🐙 GitHub: https://github.com/FahimFaysalNirjhar
+- 📧 Email: fahimfaysal1995@gmail.com
+```
